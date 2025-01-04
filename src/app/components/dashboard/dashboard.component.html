@@ -1,2 +1,40 @@
-<!-- test logout -->
-<button type="submit" class="btn btn-primary" (click)="logout()">logout</button>
+<div class="position-absolute top-0 end-0 mt-3 me-3">
+  <div class="dropdown">
+    <button
+      class="btn btn-outline-primary btn-sm dropdown-toggle"
+      type="button"
+      id="dropdownMenuButton"
+      data-bs-toggle="dropdown"
+      aria-expanded="false"
+    >
+      Profile
+    </button>
+
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
+      <li><a class="dropdown-item text-danger" (click)="logout()">Logout</a></li>
+    </ul>
+  </div>
+</div>
+
+
+<div class="container margin">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h1 class="mb-0">Task Management</h1>
+    <button type="button" class="btn btn-primary mt-2" (click)="openModal(taskModal)">
+      Create Task
+    </button>
+  </div>
+
+  <!-- Modal Content -->
+  <ng-template #taskModal let-modal>
+    <div class="modal-header">
+      <h5 class="modal-title" id="taskModalLabel">Create Task</h5>
+      <button type="button" class="btn-close" (click)="modal.dismiss()"></button>
+    </div>
+    <div class="modal-body">
+      <app-task (taskSaved)="onTaskCreate(modal)"></app-task>
+    </div>
+  </ng-template>
+</div>
+
+<app-tasks-list [tasks]="tasks"></app-tasks-list>
