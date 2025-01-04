@@ -19,13 +19,11 @@ export class LoginComponent {
   login(): void {
     this.authService.login(this.user).subscribe({
       next: () => {
-        this.message = 'Login successful!';
-        this.messageClass = 'text-success';
         this.router.navigate(['/dashboard']);
       },
       error: () => {
         this.message = 'Login failed' ;
-        this.messageClass = 'text-danger';
+        this.messageClass = 'alert alert-danger';
       }
     });
   }

@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import {User} from '../../models/user.model';
 import {AuthService} from '../../services/auth.service';
-import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -15,20 +14,19 @@ export class RegisterComponent {
   message: string = '';
   messageClass: string | undefined;
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService) {}
 
   register(): void {
     this.authService.register(this.user).subscribe({
       next: (response) => {
         if(response) {
-          this.message = 'Registration successful';
-          this.messageClass = 'text-success';
-          this.router.navigate(['/login']);
+          this.message = 'Registration successful.';
+          this.messageClass = 'alert alert-info';
         }
       },
       error: () => {
         this.message = 'Registration failed';
-        this.messageClass = 'text-danger';
+        this.messageClass = 'alert alert-danger';
       }
     });
   }

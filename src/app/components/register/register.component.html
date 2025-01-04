@@ -40,14 +40,19 @@
         </div>
       </div>
 
-      <button type="submit" class="btn btn-primary w-100">Register</button>
+      <button type="submit" class="btn btn-primary w-100 mb-3">Register</button>
     </form>
+
+    <!-- Alert message -->
+    <ng-template [ngIf]="message">
+      <div [ngClass]="messageClass" role="alert">
+        {{ message }}
+      </div>
+    </ng-template>
 
     <p class="mt-3 text-center">
       Already have an account?
       <a href="/login" class="text-primary">Login here</a>
     </p>
-
-    <p class="mt-3 text-center" [ngClass]="messageClass">{{ message }}</p>
   </div>
 </div>
